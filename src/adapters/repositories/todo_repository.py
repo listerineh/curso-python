@@ -1,4 +1,9 @@
+import psycopg2
 from typing import List
+
+from psycopg2.extensions import cursor
+
+from src.adapters.utils.env_manager import get_settings
 from src.core.domain.todo import Todo
 from src.core.ports.todo_port import TodoPort
 
@@ -24,7 +29,29 @@ class InMemoryTodoRepository(TodoPort):
 
 
 class PostgresTodoRepository(TodoPort):
-    pass
+    def __init__(self):
+        settings = get_settings()
+
+        try:
+            self.connection = psycopg2.connect(
+                dbname=settings.postgres_dbname,
+                user=settings.postgres_user,
+                password=settings.postgres_password,
+                host=settings.postgres_host,
+                port=settings.postgres_port,
+            )
+            self.cursor = self.connection.cursor()
+        except psycopg2.Error as e:
+            raise e
+
+    def get_all(self) -> List[Todo]:
+        self.cursor.execute("SELECT * FROM Todos;")
+        todos = self.cursor.fetchall()
+
+        for todo in todos:
+            print(todo)
+
+        return []
 
 
 class FirebaseTodoRepository(TodoPort):

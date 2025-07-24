@@ -8,10 +8,11 @@ class TodoService:
     def __init__(self, port: TodoPort) -> None:
         self.port: TodoPort = port
 
-    def get_all(self) -> List[Todo]:
+    def get_all(self) -> List[dict]:
         todos = self.port.get_all()
+        parsed_todos = [todo.to_dict() for todo in todos]
 
-        return todos
+        return parsed_todos
 
     def create(self, new_todo: Todo) -> str:
         if self.port.exists(new_todo.id):

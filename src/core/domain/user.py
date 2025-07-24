@@ -1,15 +1,12 @@
 from dataclasses import dataclass
-from datetime import datetime
 import json
 
 
 @dataclass
-class Todo:
+class User:
     id: str
-    description: str
-    created_at: datetime
-    updated_at: datetime
-    user_id: str
+    full_name: str
+    email: str
 
     def to_dict(self) -> dict:
         return json.dumps(**self)
