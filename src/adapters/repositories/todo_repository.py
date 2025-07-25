@@ -20,6 +20,22 @@ class InMemoryTodoRepository(TodoPort):
         self.todos.append(new_todo)
         return True
 
+    def update(self, id: str, new_data: Todo) -> bool:
+        for i in range(len(self.todos)):
+            if self.todos[i].id == id:
+                self.todos[i].description = new_data.description
+                self.todos[i].updated_at = new_data.updated_at
+                return True
+
+        return False
+
+    def delete(self, id: str) -> bool:
+        for todo in self.todos:
+            if todo.id == id:
+                self.todos.remove(todo)
+                return True
+        return False
+
     def exists(self, id: str) -> bool:
         for todo in self.todos:
             if todo.id == id:

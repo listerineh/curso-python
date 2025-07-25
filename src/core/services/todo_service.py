@@ -24,3 +24,25 @@ class TodoService:
             return "Todo creado satisfactoriamente"
         else:
             return "No se ha podido crear el todo"
+
+    def update(self, id: str, new_data: Todo) -> str:
+        if not self.port.exists(id):
+            return f"Todo con id: {id} no existe en el sistema"
+
+        updated = self.port.update(id, new_data)
+
+        if updated:
+            return "Todo actualizado satisfactoriamente"
+        else:
+            return "No se ha podido actualizar el todo"
+
+    def delete(self, id: str) -> str:
+        if not self.port.exists(id):
+            return f"Todo con id: {id} no existe en el sistema"
+
+        deleted = self.port.delete(id)
+
+        if deleted:
+            return "Todo removido satisfactoriamente"
+        else:
+            return "No se ha podido remover el todo"
