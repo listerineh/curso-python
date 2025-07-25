@@ -1,7 +1,7 @@
 from typing import List
 
-from src.core.domain.todo import Todo
-from src.core.ports.todo_port import TodoPort
+from api.core.domain.todo import Todo
+from api.core.ports.todo_port import TodoPort
 
 
 class TodoService:

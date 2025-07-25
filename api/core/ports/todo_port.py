@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import List
 
-from src.core.domain.todo import Todo
+from api.core.domain.todo import Todo
 
 
 class TodoPort(ABC):

@@ -3,9 +3,9 @@ from typing import List
 
 from psycopg2.extensions import cursor
 
-from src.adapters.utils.env_manager import get_settings
-from src.core.domain.todo import Todo
-from src.core.ports.todo_port import TodoPort
+from api.adapters.utils.env_manager import get_settings
+from api.core.domain.todo import Todo
+from api.core.ports.todo_port import TodoPort
 
 
 class InMemoryTodoRepository(TodoPort):

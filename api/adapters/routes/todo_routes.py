@@ -2,10 +2,10 @@ import httpx
 import json
 from fastapi import APIRouter, Response
 
-from src.adapters.dtos.todo_dtos import TodoDeleteRequest, TodoPostRequest, TodoPutRequest
-from src.core.domain.todo import Todo
-from src.core.services.todo_service import TodoService
-from src.adapters.repositories.todo_repository import PostgresTodoRepository, InMemoryTodoRepository
+from api.adapters.dtos.todo_dtos import TodoDeleteRequest, TodoPostRequest, TodoPutRequest
+from api.core.domain.todo import Todo
+from api.core.services.todo_service import TodoService
+from api.adapters.repositories.todo_repository import PostgresTodoRepository, InMemoryTodoRepository
 
 todos = APIRouter()
 repository = InMemoryTodoRepository()

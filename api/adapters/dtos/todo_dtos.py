@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Union
 from dataclasses import dataclass
 
-from src.core.domain.todo import Todo
+from api.core.domain.todo import Todo
 
 
 @dataclass

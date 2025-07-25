@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.adapters.routes.todo_routes import todos
+from api.adapters.routes.todo_routes import todos
 
 
 app = FastAPI()
